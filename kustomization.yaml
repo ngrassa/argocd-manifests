@@ -1,40 +1,47 @@
 apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
 
-# Tous les deployments
 resources:
-  - api-gateway-deployment.yaml
-  - eureka-deployment.yaml
-  - frontend-deployment.yaml
-  - invoice-service-deployment.yaml
-  - keycloak-deployment.yaml
-  - notification-service-deployment.yaml
-  - payment-service-deployment.yaml
-  - postgres-deployment.yaml
-  - redis-deployment.yaml
-  - signature-service-deployment.yaml
-  - subscription-service-deployment.yaml
-  - user-auth-service-deployment.yaml
-
-# Tous les services
-  - api-gateway-service.yaml
-  - eureka-service.yaml
-  - frontend-service.yaml
-  - invoice-service.yaml
-  - keycloak-service.yaml
-  - notification-service.yaml
-  - payment-service.yaml
-  - postgres-service.yaml
-  - redis-service.yaml
-  - signature-service.yaml
-  - subscription-service.yaml
-  - user-auth-service.yaml
-
-# PVC, PV et ConfigMaps
-  - postgres-pvc.yaml
+  # Infrastructure
   - postgres-pv.yaml
+  - postgres-pvc.yaml
   - postgres-configmap.yaml
   - postgres-init-configmap.yaml
-  - redis-pvc.yaml
+  - postgres-deployment.yaml
+  - postgres-service.yaml
   - redis-pv.yaml
+  - redis-pvc.yaml
+  - redis-deployment.yaml
+  - redis-service.yaml
+  
+  # Security
   - plateforme-secrets.yaml
+  - keycloak-deployment.yaml
+  - keycloak-service.yaml
+  
+  # Discovery
+  - eureka-deployment.yaml
+  - eureka-service.yaml
+  
+  # Gateway
+  - api-gateway-deployment.yaml
+  - api-gateway-service.yaml
+  
+  # Frontend
+  - frontend-nginx-configmap.yaml
+  - frontend-deployment.yaml
+  - frontend-service.yaml
+  
+  # Services
+  - user-auth-service-deployment.yaml
+  - user-auth-service.yaml
+  - invoice-service-deployment.yaml
+  - invoice-service.yaml
+  - payment-service-deployment.yaml
+  - payment-service.yaml
+  - subscription-service-deployment.yaml
+  - subscription-service.yaml
+  - notification-service-deployment.yaml
+  - notification-service.yaml
+  - signature-service-deployment.yaml
+  - signature-service.yaml
