@@ -1,0 +1,40 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+
+# Tous les deployments
+resources:
+  - api-gateway-deployment.yaml
+  - eureka-deployment.yaml
+  - frontend-deployment.yaml
+  - invoice-service-deployment.yaml
+  - keycloak-deployment.yaml
+  - notification-service-deployment.yaml
+  - payment-service-deployment.yaml
+  - postgres-deployment.yaml
+  - redis-deployment.yaml
+  - signature-service-deployment.yaml
+  - subscription-service-deployment.yaml
+  - user-auth-service-deployment.yaml
+
+# Tous les services
+  - api-gateway-service.yaml
+  - eureka-service.yaml
+  - frontend-service.yaml
+  - invoice-service.yaml
+  - keycloak-service.yaml
+  - notification-service.yaml
+  - payment-service.yaml
+  - postgres-service.yaml
+  - redis-service.yaml
+  - signature-service.yaml
+  - subscription-service.yaml
+  - user-auth-service.yaml
+
+# PVC, PV et ConfigMaps
+  - postgres-pvc.yaml
+  - postgres-pv.yaml
+  - postgres-configmap.yaml
+  - postgres-init-configmap.yaml
+  - redis-pvc.yaml
+  - redis-pv.yaml
+  - plateforme-secrets.yaml

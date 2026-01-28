@@ -1,0 +1,49 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: api-gateway
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: api-gateway
+  template:
+    metadata:
+      labels:
+        app: api-gateway
+    spec:
+      containers:
+        - name: api-gateway
+          image: grassa77/plateforme-gateway:latest
+          imagePullPolicy: IfNotPresent
+          ports:
+            - containerPort: 8080
+          env:
+            - name: EUREKA_CLIENT_SERVICEURL_DEFAULTZONE
+              value: http://eureka-server:8761/eureka/
+            - name: SPRING_PROFILES_ACTIVE
+              value: docker
+            - name: SPRING_CLOUD_GATEWAY_ROUTES_0_ID
+              value: invoice-service
+            - name: SPRING_CLOUD_GATEWAY_ROUTES_0_URI
+              value: http://invoice-service:8082
+            - name: SPRING_CLOUD_GATEWAY_ROUTES_0_PREDICATES_0
+              value: Path=/api/invoices/**
+            - name: SPRING_CLOUD_GATEWAY_ROUTES_1_ID
+              value: payment-service
+            - name: SPRING_CLOUD_GATEWAY_ROUTES_1_URI
+              value: http://payment-service:8083
+            - name: SPRING_CLOUD_GATEWAY_ROUTES_1_PREDICATES_0
+              value: Path=/api/payments/**
+            - name: SPRING_CLOUD_GATEWAY_ROUTES_2_ID
+              value: client-service
+            - name: SPRING_CLOUD_GATEWAY_ROUTES_2_URI
+              value: http://invoice-service:8082
+            - name: SPRING_CLOUD_GATEWAY_ROUTES_2_PREDICATES_0
+              value: Path=/api/clients/**
+            - name: KEYCLOAK_BASE_URL
+              value: http://keycloak:8080
+            - name: REDIS_HOST
+              value: redis
+            - name: REDIS_PORT
+              value: "6379"
