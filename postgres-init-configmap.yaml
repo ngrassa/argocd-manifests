@@ -3,7 +3,7 @@ kind: ConfigMap
 metadata:
   name: postgres-init-scripts
 data:
-  init.sql: |
+  01-init.sql: |
     CREATE DATABASE invoice_db;
     CREATE DATABASE payment_db;
     CREATE DATABASE subscription_db;
