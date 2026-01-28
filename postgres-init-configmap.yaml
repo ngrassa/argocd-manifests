@@ -9,9 +9,8 @@ data:
     CREATE DATABASE subscription_db;
     CREATE DATABASE user_auth_db;
     CREATE DATABASE keycloak;
-    
-    GRANT ALL PRIVILEGES ON DATABASE invoice_db TO postgres;
-    GRANT ALL PRIVILEGES ON DATABASE payment_db TO postgres;
-    GRANT ALL PRIVILEGES ON DATABASE subscription_db TO postgres;
-    GRANT ALL PRIVILEGES ON DATABASE user_auth_db TO postgres;
-    GRANT ALL PRIVILEGES ON DATABASE keycloak TO postgres;
+    GRANT ALL PRIVILEGES ON DATABASE invoice_db TO plateforme_user;
+    GRANT ALL PRIVILEGES ON DATABASE payment_db TO plateforme_user;
+    GRANT ALL PRIVILEGES ON DATABASE subscription_db TO plateforme_user;
+    GRANT ALL PRIVILEGES ON DATABASE user_auth_db TO plateforme_user;
+    GRANT ALL PRIVILEGES ON DATABASE keycloak TO plateforme_user;
