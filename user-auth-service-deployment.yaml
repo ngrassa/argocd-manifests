@@ -48,3 +48,5 @@ spec:
                 secretKeyRef:
                   name: plateforme-secrets
                   key: KEYCLOAK_CLIENT_SECRET
+            - name: SPRING_SQL_INIT_MODE
+              value: never

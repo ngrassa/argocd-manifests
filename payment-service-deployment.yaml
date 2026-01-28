@@ -45,3 +45,5 @@ spec:
               value: update
             - name: KEYCLOAK_BASE_URL
               value: http://keycloak:8080
+            - name: SPRING_SQL_INIT_MODE
+              value: never
