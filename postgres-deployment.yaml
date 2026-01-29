@@ -48,6 +48,22 @@ spec:
             limits:
               memory: "512Mi"
               cpu: "500m"
+          readinessProbe:
+            exec:
+              command:
+                - pg_isready
+                - -U
+                - plateforme_user
+            initialDelaySeconds: 15
+            periodSeconds: 10
+          livenessProbe:
+            exec:
+              command:
+                - pg_isready
+                - -U
+                - plateforme_user
+            initialDelaySeconds: 30
+            periodSeconds: 10
       volumes:
         - name: postgres-storage
           persistentVolumeClaim:

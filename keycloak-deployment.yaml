@@ -44,7 +44,7 @@ spec:
             - name: KC_DB
               value: postgres
             - name: KC_DB_URL
-              value: jdbc:postgresql://postgresql:5432/user_auth_db
+              value: jdbc:postgresql://postgresql:5432/keycloak
             - name: KC_DB_USERNAME
               valueFrom:
                 secretKeyRef:
@@ -55,3 +55,15 @@ spec:
                 secretKeyRef:
                   name: plateforme-secrets
                   key: KEYCLOAK_DB_PASSWORD
+          readinessProbe:
+            httpGet:
+              path: /health/ready
+              port: 8080
+            initialDelaySeconds: 60
+            periodSeconds: 10
+          livenessProbe:
+            httpGet:
+              path: /health/live
+              port: 8080
+            initialDelaySeconds: 120
+            periodSeconds: 10
