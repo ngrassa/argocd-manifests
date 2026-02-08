@@ -55,28 +55,11 @@ spec:
                 secretKeyRef:
                   name: plateforme-secrets
                   key: KEYCLOAK_DB_PASSWORD
-          resources:                        # ← AJOUTÉ
-            requests:                       # ← AJOUTÉ
-              memory: "512Mi"               # ← AJOUTÉ
-              cpu: "250m"                   # ← AJOUTÉ
-            limits:                         # ← AJOUTÉ
-              memory: "1Gi"                 # ← AJOUTÉ
-              cpu: "1000m"                  # ← AJOUTÉ
-          readinessProbe:
-            httpGet:
-              path: /health/ready
-              port: 8080
-            initialDelaySeconds: 90
-            periodSeconds: 10
-            timeoutSeconds: 10
-            failureThreshold: 6
-            successThreshold: 1
-          livenessProbe:
-            httpGet:
-              path: /health/live
-              port: 8080
-            initialDelaySeconds: 180
-            periodSeconds: 10
-            timeoutSeconds: 10
-            failureThreshold: 6
-            successThreshold: 1
+          resources:
+            requests:
+              memory: "512Mi"
+              cpu: "250m"
+            limits:
+              memory: "1Gi"
+              cpu: "1000m"
+          # ← PROBES SUPPRIMÉES !
