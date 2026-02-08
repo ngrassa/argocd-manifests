@@ -53,7 +53,7 @@ spec:
               command:
                 - pg_isready
                 - -U
-                - plateforme_user
+                - postgres   # changer a la place de plateforme_user
             initialDelaySeconds: 15
             periodSeconds: 10
           livenessProbe:
@@ -61,7 +61,7 @@ spec:
               command:
                 - pg_isready
                 - -U
-                - plateforme_user
+                - postgres #changer
             initialDelaySeconds: 30
             periodSeconds: 10
       volumes:

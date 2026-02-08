@@ -22,11 +22,17 @@ spec:
             httpGet:
               path: /actuator/health
               port: 8761
-            initialDelaySeconds: 30
+            initialDelaySeconds: 90        # ← AUGMENTÉ de 30 à 90
             periodSeconds: 10
+            timeoutSeconds: 5              # ← AJOUTÉ (important!)
+            failureThreshold: 6            # ← AJOUTÉ (important!)
+            successThreshold: 1            # ← AJOUTÉ (par défaut, mais explicite)
           livenessProbe:
             httpGet:
               path: /actuator/health
               port: 8761
-            initialDelaySeconds: 60
+            initialDelaySeconds: 120       # ← AUGMENTÉ de 60 à 120
             periodSeconds: 10
+            timeoutSeconds: 5              # ← AJOUTÉ (important!)
+            failureThreshold: 6            # ← AJOUTÉ (important!)
+            successThreshold: 1            # ← DOIT être 1 pour liveness
