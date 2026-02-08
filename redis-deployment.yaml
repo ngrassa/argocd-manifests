@@ -26,15 +26,21 @@ spec:
               command:
                 - redis-cli
                 - ping
-            initialDelaySeconds: 5
+            initialDelaySeconds: 15        # ← Augmenté de 5 à 15
             periodSeconds: 10
+            timeoutSeconds: 5              # ← AJOUTÉ
+            failureThreshold: 6            # ← AJOUTÉ
+            successThreshold: 1            # ← AJOUTÉ (optionnel)
           livenessProbe:
             exec:
               command:
                 - redis-cli
                 - ping
-            initialDelaySeconds: 15
+            initialDelaySeconds: 30        # ← Augmenté de 15 à 30
             periodSeconds: 10
+            timeoutSeconds: 5              # ← AJOUTÉ (CRITIQUE!)
+            failureThreshold: 6            # ← AJOUTÉ
+            successThreshold: 1            # ← AJOUTÉ (optionnel)
       volumes:
         - name: redis-data
           persistentVolumeClaim:
