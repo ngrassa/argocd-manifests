@@ -17,7 +17,7 @@ spec:
           image: yassmineg/plateforme-notification:latest
           imagePullPolicy: IfNotPresent
           ports:
-            - containerPort: 8080
+            - containerPort: 8085 #8080->8085
           env:
             - name: SPRING_PROFILES_ACTIVE
               value: docker
