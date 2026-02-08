@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
         - name: signature-service
-          image: yassemineg/plateforme-signature:latest
+          image: yassmineg/plateforme-signature:latest
           imagePullPolicy: IfNotPresent
           ports:
             - containerPort: 8080

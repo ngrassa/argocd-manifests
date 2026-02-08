@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
         - name: user-auth-service
-          image: yassemineg/plateforme-userauth:latest
+          image: yassmineg/plateforme-userauth:latest
           imagePullPolicy: IfNotPresent
           ports:
             - containerPort: 8081
