@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
         - name: api-gateway
-          image: grassa77/plateforme-gateway:latest
+          image: yassemineg/plateforme-gateway:latest
           imagePullPolicy: IfNotPresent
           ports:
             - containerPort: 8080

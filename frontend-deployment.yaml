@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
         - name: frontend
-          image: grassa77/plateforme-frontend:v1
+          image: yassemineg/plateforme-frontend:v1
           imagePullPolicy: IfNotPresent
           ports:
             - containerPort: 80
