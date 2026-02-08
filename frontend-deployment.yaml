@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
         - name: frontend
-          image: yassemineg/plateforme-frontend:v1
+          image: yassemineg/plateforme-frontend:latest
           imagePullPolicy: IfNotPresent
           ports:
             - containerPort: 80

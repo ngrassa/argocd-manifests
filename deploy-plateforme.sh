@@ -3,7 +3,7 @@
 #===============================================================================
 # SCRIPT DE DÉPLOIEMENT - PLATEFORME ÉLECTRONIQUE
 # Auteur: Nordine Grassa
-# Date: 2026-01-29
+# Date: 2026-02-08
 # Description: Déploie la plateforme électronique sur Minikube avec ArgoCD
 #===============================================================================
 

@@ -1,0 +1,18 @@
+kubectl rollout restart deployment -n plateforme-electronique
+
+
+# Restart d'une application ArgoCD spécifique
+argocd app actions run plateforme-electronique restart \
+  --kind Deployment \
+  --resource-name api-gateway
+
+# Restart de tous les deployments d'une application
+argocd app actions run plateforme-electronique restart \
+  --kind Deployment \
+  --all
+
+# Hard refresh + sync
+argocd app sync plateforme-electronique --force --prune
+
+# Avec remplacement complet
+argocd app sync plateforme-electronique --force --replace
