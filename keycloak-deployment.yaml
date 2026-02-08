@@ -59,11 +59,17 @@ spec:
             httpGet:
               path: /health/ready
               port: 8080
-            initialDelaySeconds: 60
+            initialDelaySeconds: 90        # ← Augmenté de 60 à 90
             periodSeconds: 10
+            timeoutSeconds: 10             # ← AJOUTÉ (CRITIQUE!)
+            failureThreshold: 6            # ← AJOUTÉ
+            successThreshold: 1            # ← AJOUTÉ (optionnel)
           livenessProbe:
             httpGet:
               path: /health/live
               port: 8080
-            initialDelaySeconds: 120
+            initialDelaySeconds: 180       # ← Augmenté de 120 à 180 (3 minutes!)
             periodSeconds: 10
+            timeoutSeconds: 10             # ← AJOUTÉ (CRITIQUE!)
+            failureThreshold: 6            # ← AJOUTÉ
+            successThreshold: 1            # ← AJOUTÉ (optionnel)
