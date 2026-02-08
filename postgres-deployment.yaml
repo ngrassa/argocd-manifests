@@ -53,17 +53,23 @@ spec:
               command:
                 - pg_isready
                 - -U
-                - postgres   # changer a la place de plateforme_user
-            initialDelaySeconds: 15
+                - postgres
+            initialDelaySeconds: 30        # ← Augmenté de 15 à 30
             periodSeconds: 10
+            timeoutSeconds: 10             # ← AJOUTÉ
+            failureThreshold: 6            # ← AJOUTÉ
+            successThreshold: 1            # ← AJOUTÉ (optionnel)
           livenessProbe:
             exec:
               command:
                 - pg_isready
                 - -U
-                - postgres #changer
-            initialDelaySeconds: 30
+                - postgres
+            initialDelaySeconds: 45        # ← Augmenté de 30 à 45
             periodSeconds: 10
+            timeoutSeconds: 10             # ← AJOUTÉ (CRITIQUE!)
+            failureThreshold: 6            # ← AJOUTÉ
+            successThreshold: 1            # ← AJOUTÉ (optionnel)
       volumes:
         - name: postgres-storage
           persistentVolumeClaim:
